@@ -19,7 +19,9 @@ from django.contrib import admin
 from django.urls import path, include
 from users.router import router as user_api_router
 
-auth_apiurls = []
+auth_apiurls = [
+    path(r'', include('rest_framework_social_oauth2.urls')),
+]
 
 if settings.DEBUG:
     auth_apiurls.append(path(r'verify/', include('rest_framework.urls')))
